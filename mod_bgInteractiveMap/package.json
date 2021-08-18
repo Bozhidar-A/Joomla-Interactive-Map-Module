@@ -1,0 +1,23 @@
+{
+  "name": "mod_bginteractivemap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "css-loader": "^6.2.0",
+    "file-loader": "^6.2.0",
+    "leaflet": "^1.7.1"
+  },
+  "devDependencies": {
+    "mini-css-extract-plugin": "^2.2.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}

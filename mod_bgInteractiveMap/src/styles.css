@@ -1,0 +1,9 @@
+#map{
+    width: 100%; 
+    height: 100%;
+}
+
+.bgmap{
+    height: 500px;
+    width: 500px;
+}
