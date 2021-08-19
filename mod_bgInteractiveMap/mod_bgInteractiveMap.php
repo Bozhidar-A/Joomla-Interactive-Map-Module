@@ -18,12 +18,9 @@ require ModuleHelper::getLayoutPath('mod_bgInteractiveMap', $params->get('layout
 
 $tmp = [
     [
-        'lat' => 1,
-        'long' => 1
-    ],
-    [
-        'lat' => 2,
-        'long' => 2
+        'name' => 'Sofia',
+        'lat' => 42.6977,
+        'long' => 23.3219
     ]
 ];
 
@@ -34,7 +31,7 @@ $tmp = [
 <script>console.log(<?php echo json_encode($tmp)?>)</script>
 
 <div class="bgmap" data-id="<?php echo $module->id; ?>">
-<input type="hidden" id="<?php echo $module->id; ?>_value" value="<?php echo htmlentities(json_encode($tmp)) ; ?>" />
+<input type="hidden" id="mapData" value="<?php echo htmlentities(json_encode($tmp)) ; ?>" />
 
 <div id="map"></div>
 

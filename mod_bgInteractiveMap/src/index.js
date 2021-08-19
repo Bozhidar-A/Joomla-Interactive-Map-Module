@@ -32,5 +32,18 @@ map.setView(defaultCenter, defaultZoom);
 //sets tiles to map object
 basemap.addTo(map);
 
-//creates marker with text and zoom on click
-ZoomMarker(map, SOFIA_GPS, 10, `<a href="http://example.com/">Visit and explore Sofia!</a>`)
+//get the data from php
+//get the mapData dom element
+var mapData = document.getElementById("mapData")
+console.log(mapData.value)
+
+if(mapData.value === null)
+{
+    console.error("NO MAP DATA")
+}
+
+//parse the obj 
+JSON.parse(mapData.value).forEach(el => {
+    //creates marker with text and zoom on click
+    ZoomMarker(map, [el.lat,el.long], 10, `<a href="http://example.com/">Visit and explore ${el.name}!</a>`)
+});
