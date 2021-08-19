@@ -9,7 +9,7 @@ import L from 'leaflet';
  */
 export default function ZoomMarker(map, latlng, zoomLevel, msg)
 {
-    var marker = L.marker(latlng)//creats marker at these coordinates
+    var marker = L.marker(latlng)//creates marker at these coordinates
     .addTo(map)//adds it to the map
     .bindPopup(msg);//sets the given msg to pop up on click
 

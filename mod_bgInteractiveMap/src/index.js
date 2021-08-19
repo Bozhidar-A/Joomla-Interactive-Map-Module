@@ -15,13 +15,14 @@ const SOFIA_GPS = [42.6977,23.3219]
 const defaultZoom = 7.7;
 
 const map = L.map('map', {
-  zoomSnap: 0.1, //updates leaflet to allow fractinal zoom
-  minZoom: defaultZoom, //user cant zoom out anymore then start
+  zoomSnap: 0.1, //updates leaflet to allow fractional zoom
+  minZoom: defaultZoom, //user cant zoom out anymore then on start
   maxBounds: [[44.267552653898946, 21.19562785223469], [41.24442015186197, 29.71685444362345]]
   //forces map to stay on Bulgaria
 });
 
-//tile map chnage this to chnage map look
+//tile map 
+//change this to change map look
 const basemap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
   attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
 });
@@ -37,6 +38,7 @@ basemap.addTo(map);
 var mapData = document.getElementById("mapData")
 console.log(mapData.value)
 
+//check if it got anyhting
 if(mapData.value === null)
 {
     console.error("NO MAP DATA")
