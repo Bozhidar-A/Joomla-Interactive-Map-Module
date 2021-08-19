@@ -3,12 +3,12 @@ import '../node_modules/leaflet/dist/leaflet.css';
 import ZoomMarker from './ZoomMarker';
 
 /* This code is needed to properly load the images in the Leaflet CSS */
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
+// delete L.Icon.Default.prototype._getIconUrl;
+// L.Icon.Default.mergeOptions({
+//   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+//   iconUrl: require('leaflet/dist/images/marker-icon.png'),
+//   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+// });
 
 const defaultCenter = [42.7249925, 25.4833039];
 const SOFIA_GPS = [42.6977,23.3219]
@@ -36,12 +36,11 @@ basemap.addTo(map);
 //get the data from php
 //get the mapData dom element
 var mapData = document.getElementById("mapData")
-console.log(mapData.value)
 
 //check if it got anyhting
 if(mapData.value === null)
 {
-    console.error("NO MAP DATA")
+  console.error("NO MAP DATA")
 }
 
 //parse the obj 

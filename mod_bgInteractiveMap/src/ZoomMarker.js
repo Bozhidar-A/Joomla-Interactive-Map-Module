@@ -1,4 +1,4 @@
-import L from 'leaflet';
+import L from '../node_modules/leaflet/dist/leaflet';
 
 /**
  * ZoomMarker creates marker with text and zoom on click
@@ -9,11 +9,13 @@ import L from 'leaflet';
  */
 export default function ZoomMarker(map, latlng, zoomLevel, msg)
 {
+    // console.log(map, latlng, zoomLevel, msg)
     var marker = L.marker(latlng)//creates marker at these coordinates
-    .addTo(map)//adds it to the map
-    .bindPopup(msg);//sets the given msg to pop up on click
+    .bindPopup(msg)//sets the given msg to pop up on click
+    .addTo(map);//adds it to the map
 
     marker.on('click', function(e){
+        console.log(map, e.latlang, zoomLevel, "click func")
         map.setView(e.latlng, zoomLevel);
     });//zoom to the specified level when clicked
 }
