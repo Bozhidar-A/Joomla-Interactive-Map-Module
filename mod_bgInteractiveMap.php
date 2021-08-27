@@ -16,24 +16,32 @@ $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
 require_once __DIR__.'/helper.php';
 
-$items = getArticlesFromCategory(2);
+$items = getArticlesFromCategory(8);
 // var_dump($items);
 
-
+$coords = [];
 
 foreach($items as $item) {
     // everyone
-    var_dump($item->coordinates);
+    if (! isset($item->coordinates) || $item->coordinates['lat'] === null) {
+        continue;
+    }
 
-    // $id = $article->$aid;
-    // var_dump($id);
-
-    //var_dump($article->coordinates);
+    $coords[$item->id] = [
+            'id' => $item->id,
+            'name' => $item->title,
+            'alias' => $item->alias,
+            'lat' => $item->coordinates['lat'],
+            'long' => $item->coordinates['long'],
+            'url' => JUri::base() . 'index.php/map/8-places/' . $item->id . '-' . $item->alias,
+            // 'url' => JRoute::_('index.php?option=com_content&id='.$item->id)
+    ];
 
 }
 
+//var_dump($coords);
 
-require ModuleHelper::getLayoutPath('mod_bgInteractiveMap', $params->get('layout', 'default'));
+// require ModuleHelper::getLayoutPath('mod_bgInteractiveMap', $params->get('layout', 'default'));
 
 $tmp = [
     [
@@ -303,18 +311,26 @@ $tmp = [
     ]
 ];
 
-
-
 ?>
-<link rel="stylesheet" href="<?php JUri::base(); ?>modules/mod_bgInteractiveMap/node_modules/leaflet/dist/leaflet.css">
-<link rel="stylesheet" href="<?php JUri::base(); ?>modules/mod_bgInteractiveMap/src/styles.css">
 
+
+
+
+<script>console.log(Object.values(<?php echo json_encode($items)?>))</script>
+<script>console.log(Object.values(<?php echo json_encode($coords)?>))</script>
 <script>console.log(<?php echo json_encode($tmp)?>)</script>
 
+<link rel="stylesheet" href="<?php JUri::base(); ?>modules/mod_bgInteractiveMap/assets/module.css">
+
 <div class="bgmap" data-id="<?php echo $module->id; ?>">
-<input type="hidden" id="mapData" value="<?php echo htmlentities(json_encode($tmp)) ; ?>" />
+    <input type="hidden" id="mapData" value="<?php echo htmlentities(json_encode($coords)) ; ?>" />
+    <div id="mapid"></div>
 
-<div id="map"></div>
+    <!-- <ul>
+        <?php foreach($items as $item) {?>
+            <li><a href="<?php echo JUri::base(); ?>index.php/map/8-places/<?php echo $item->id; ?>-<?php echo $item->alias ?>"><?php echo $item->title ?></a></li>
+        <?php } unset($item)?>
+    </ul> -->
+</div>
 
-
-<script src="<?php JUri::base();?>modules/mod_bgInteractiveMap/dist/bundle.js"></script> 
+<script src="<?php JUri::base();?>modules/mod_bgInteractiveMap/dist/bundle.js" defer></script>

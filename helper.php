@@ -15,7 +15,7 @@ function getArticlesFromCategory($category_id) {
         // Set the filters based on the module params
         $model->setState('list.start', 0);
         $model->setState('list.limit', 200);
-        $model->setState('filter.category_id', $categoryId);
+        $model->setState('filter.category_id', $category_id);
         $model->setState('filter.published', 1);
 
         // Permissions
