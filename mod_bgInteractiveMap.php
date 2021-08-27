@@ -37,21 +37,11 @@ foreach($items as $item) {
 
 }
 
-<script>console.log(Object.values(<?php echo json_encode($items)?>))</script>
-<script>console.log(Object.values(<?php echo json_encode($coords)?>))</script>
-<script>console.log(<?php echo json_encode($tmp)?>)</script>
-
 <link rel="stylesheet" href="<?php JUri::base(); ?>modules/mod_bgInteractiveMap/assets/module.css">
 
 <div class="bgmap" data-id="<?php echo $module->id; ?>">
     <input type="hidden" id="mapData" value="<?php echo htmlentities(json_encode($coords)) ; ?>" />
     <div id="mapid"></div>
-
-    <!-- <ul>
-        <?php foreach($items as $item) {?>
-            <li><a href="<?php echo JUri::base(); ?>index.php/map/8-places/<?php echo $item->id; ?>-<?php echo $item->alias ?>"><?php echo $item->title ?></a></li>
-        <?php } unset($item)?>
-    </ul> -->
 </div>
 
 <script src="<?php JUri::base();?>modules/mod_bgInteractiveMap/dist/bundle.js" defer></script>
