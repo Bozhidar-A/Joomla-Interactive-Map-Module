@@ -1,11 +1,11 @@
-import L from '../node_modules/leaflet/dist/leaflet';
+import * as L from 'leaflet';
 
 /**
  * ZoomMarker creates marker with text and zoom on click
- * @param {any} map Pass the map object from leaflet 
+ * @param {any} map Pass the map object from leaflet
  * @param {any} latlang Array containing coordinates for marker location
- * @param {any} map The zoom level after a click
- * @param {any} map The pop up text
+ * @param {any} zoomLevel The zoom level after a click
+ * @param {any} msg The pop up text
  */
 export default function ZoomMarker(map, latlng, zoomLevel, msg)
 {
